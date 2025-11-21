@@ -13,7 +13,6 @@ add_library(lib ip_filter.cpp)
 add_executable(test_func test.cpp)
 
 
-
 target_compile_features(lab2 PRIVATE cxx_std_20)
 target_compile_features(lib PRIVATE cxx_std_20)
 target_compile_features(test_func PRIVATE cxx_std_20)

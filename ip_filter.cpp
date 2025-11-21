@@ -100,16 +100,13 @@ std::vector<std::tuple<int, int, int, int>> filter_any(auto ip_pool, int key){
     return result;
 }
 
-int uraghaa()
-{
-    try
-    {
+int uraghaa(){
+    try{
         std::vector<std::tuple<int, int, int, int>> ip_pool;
         auto byte_by_index{[](std::vector<std::string> v, int index)
                            { return std::stoi(split(v.at(0), '.')[index]); }};
 
-        for (std::string line; std::getline(std::cin, line);)
-        {
+        for (std::string line; std::getline(std::cin, line);){
             std::vector<std::string> v = split(line, '\t');
             std::tuple<int, int, int, int> temp = {byte_by_index(v, 0), byte_by_index(v, 1), byte_by_index(v, 2), byte_by_index(v, 3)};
             ip_pool.push_back(temp);
