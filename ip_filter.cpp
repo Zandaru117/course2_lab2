@@ -31,8 +31,7 @@ std::vector<std::string> split(const std::string &str, char d)
     return r;
 }
 
-void print_ip(auto ip)
-{
+void print_ip(auto ip){
     std::cout << std::get<0>(*ip) << ".";
     std::cout << std::get<1>(*ip) << ".";
     std::cout << std::get<2>(*ip) << ".";
@@ -40,8 +39,7 @@ void print_ip(auto ip)
     std::cout << "\n";
 }
 
-void print_pool(auto ip_pool)
-{
+void print_pool(auto ip_pool){
     for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
     {
         print_ip(ip);
@@ -49,8 +47,7 @@ void print_pool(auto ip_pool)
     std::cout << "\n";
 }
 
-void sort(auto *ip_pool)
-{
+void sort(auto *ip_pool){
     unsigned long long i = 1;
     unsigned long long j = 2;
     while (i < (*ip_pool).size())
