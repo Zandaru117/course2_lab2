@@ -78,28 +78,22 @@ std::vector<std::tuple<int, int, int, int>> filter(auto ip_pool, int key){
     return result;
 }
 
-std::vector<std::tuple<int, int, int, int>> filter(auto ip_pool, int key1, int key2)
-{
+std::vector<std::tuple<int, int, int, int>> filter(auto ip_pool, int key1, int key2){
     std::vector<std::tuple<int, int, int, int>> result = {};
     auto filter_two{[key1, key2](std::vector<std::tuple<int, int, int, int>>::const_iterator ip){ return std::get<0>(*ip) == key1 && std::get<1>(*ip) == key2; }};
-    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-    {
-        if (filter_two(ip))
-        {
+    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip){
+        if (filter_two(ip)){
             result.push_back(*ip);
         }
     }
     return result;
 }
 
-std::vector<std::tuple<int, int, int, int>> filter_any(auto ip_pool, int key)
-{
+std::vector<std::tuple<int, int, int, int>> filter_any(auto ip_pool, int key){
     std::vector<std::tuple<int, int, int, int>> result = {};
     auto filter_any{[key](std::vector<std::tuple<int, int, int, int>>::const_iterator ip){ return std::get<0>(*ip) == key || std::get<1>(*ip) == key || std::get<2>(*ip) == key || std::get<3>(*ip) == key; }};
-    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-    {
-        if (filter_any(ip))
-        {
+    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip){
+        if (filter_any(ip)){
             result.push_back(*ip);
         }
     }
