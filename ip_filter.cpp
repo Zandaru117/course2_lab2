@@ -40,8 +40,7 @@ void print_ip(auto ip){
 }
 
 void print_pool(auto ip_pool){
-    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-    {
+    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip){
         print_ip(ip);
     }
     std::cout << "\n";
@@ -50,21 +49,17 @@ void print_pool(auto ip_pool){
 void sort(auto *ip_pool){
     unsigned long long i = 1;
     unsigned long long j = 2;
-    while (i < (*ip_pool).size())
-    {
-        if ((*ip_pool)[i - 1] > (*ip_pool)[i])
-        {
+    while (i < (*ip_pool).size()){
+        if ((*ip_pool)[i - 1] > (*ip_pool)[i]){
             i = j;
             j++;
         }
-        else
-        {
+        else{
             auto elem = (*ip_pool)[i];
             (*ip_pool)[i] = (*ip_pool)[i - 1];
             (*ip_pool)[i - 1] = elem;
             i--;
-            if (i == 0)
-            {
+            if (i == 0){
                 i = j;
                 j++;
             }
@@ -72,14 +67,11 @@ void sort(auto *ip_pool){
     }
 }
 
-std::vector<std::tuple<int, int, int, int>> filter(auto ip_pool, int key)
-{
+std::vector<std::tuple<int, int, int, int>> filter(auto ip_pool, int key){
     std::vector<std::tuple<int, int, int, int>> result = {};
     auto filter{[key](std::vector<std::tuple<int, int, int, int>>::const_iterator ip){ return std::get<0>(*ip) == key; }};
-    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip)
-    {
-        if (filter(ip))
-        {
+    for (std::vector<std::tuple<int, int, int, int>>::const_iterator ip = ip_pool.cbegin(); ip != ip_pool.cend(); ++ip){
+        if (filter(ip)){
             result.push_back(*ip);
         }
     }
